@@ -18,7 +18,7 @@ const AddButton = ({color, text, onClick}) => {
 }
 
 AddButton.defaultProps = {
-    color: 'steetblue' // default color of button 
+    color: 'steetblue'
 }
 
 // define a different props types to prevent error and for type checking 
