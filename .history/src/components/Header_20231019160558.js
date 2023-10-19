@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const Header = ({ title }) => {
     return (
         <header>
-            <h1 style={headingStyles}> { title } </h1>
+            <h1 style={hea}> { title } </h1>
         </header>
     )
 }

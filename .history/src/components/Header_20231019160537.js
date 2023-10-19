@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 const Header = ({ title }) => {
     return (
         <header>
-            <h1 style={headingStyles}> { title } </h1>
+            <h1 style={}> { title } </h1>
         </header>
     )
 }
@@ -18,10 +18,6 @@ Header.propTypes = {
 }
 
 // styles
-const headingStyles = {
-    color: 'wheat', 
-    backgroundColor: 'green', 
-    textAlign: 'center' 
-}
+const he
 
 export default Header 
