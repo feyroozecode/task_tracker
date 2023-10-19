@@ -21,7 +21,7 @@ AddButton.defaultProps = {
     color: 'steetblue'
 }
 
-// define a different props types to prevent error and for type checking 
+// define a different props types to prevent error
 AddButton.propTypes = {
     text: PropTypes.string, 
     color: PropTypes.string,

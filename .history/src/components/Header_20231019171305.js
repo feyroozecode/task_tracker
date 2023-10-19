@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types'
 import AddButton from './AddButton'
 
-/*
- * Header compnent show title and use a AddButton component for add new task 
-*/
 const Header = ({ title }) => {
 
     const onClick = (e) => {
@@ -25,7 +22,14 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired  // title is required by the header
+    title: PropTypes.string.isRequired
+}
+
+// styles
+const headingStyles = {
+    color: 'wheat', 
+    backgroundColor: 'green', 
+    textAlign: 'center' 
 }
 
 export default Header 

@@ -25,7 +25,14 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired  // title is required by the header
+    title: PropTypes.string.isRequired
+}
+
+// styles
+const headingStyles = {
+    color: 'wheat', 
+    backgroundColor: 'green', 
+    textAlign: 'center' 
 }
 
 export default Header 

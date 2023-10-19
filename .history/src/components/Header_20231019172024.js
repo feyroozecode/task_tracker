@@ -25,7 +25,12 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired  // title is required by the header
+    title: PropTypes.string.isRequired
+}
+
+// separated styles
+const headingStyles = {
+    
 }
 
 export default Header 

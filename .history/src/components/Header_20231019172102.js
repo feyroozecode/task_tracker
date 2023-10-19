@@ -25,7 +25,7 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired  // title is required by the header
+    title: PropTypes.string.isRequired  // is 
 }
 
 export default Header 
