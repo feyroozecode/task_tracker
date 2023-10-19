@@ -4,7 +4,7 @@ const App = ()  => {
   const appName = 'Task Tracker App'
   return (
     <div className="container">
-     <Header title={appName} />
+     <Header title= />
     </div>
   );
 

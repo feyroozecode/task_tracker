@@ -1,7 +1,7 @@
 import Header from './components/Header'
 
 const App = ()  => {
-  const appName = 'Task Tracker App'
+  const appName = 'Task Tracker'
   return (
     <div className="container">
      <Header title={appName} />
@@ -10,5 +10,8 @@ const App = ()  => {
 
 }
 
+Header.defaultPropos = {
+  title: 'Task Tracker'
+}
 
 export default App;

@@ -1,14 +1,13 @@
+
 import Header from './components/Header'
 
-const App = ()  => {
-  const appName = 'Task Tracker App'
+function App()  => {
+  
   return (
     <div className="container">
-     <Header title={appName} />
+     <Header />
     </div>
   );
-
 }
-
 
 export default App;
