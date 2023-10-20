@@ -30,7 +30,7 @@ const App = ()  => {
 
 // delete task
 const deleteTask = (id) => {
-  setTasks(tasks.filter((task) => task.id !== id ))
+  setT
   console.log('delete ', id);
 }
 

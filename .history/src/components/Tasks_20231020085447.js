@@ -7,7 +7,7 @@ const Tasks = ({ tasks, onDelete }) => {
        { 
         tasks.map((task) => ( 
             <> 
-                <TaskItem task={task} onDelete={onDelete} /> 
+                <TaskItem task={task} on /> 
             </> )) 
        }
        </>
