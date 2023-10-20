@@ -6,7 +6,6 @@ import { useState } from 'react'
 */
 const App = ()  => {
    const appName = 'Task Tracker App'
-
    const [tasks, setTasks] = useState( [
     {
         id: 1,
@@ -30,7 +29,7 @@ const App = ()  => {
    return (
      <div className="container">
       <Header title={appName} />
-      <Tasks tasks={tasks} />
+      <Tasks />
      </div>
    );
 

@@ -1,13 +1,6 @@
-import Header from './components/Header'
-import Tasks from './components/Tasks'
 import { useState } from 'react'
-/**
- * A App component entry of the React App
-*/
-const App = ()  => {
-   const appName = 'Task Tracker App'
 
-   const [tasks, setTasks] = useState( [
+const tasks =  [
     {
         id: 1,
         text: 'Read Quraan',
@@ -26,14 +19,18 @@ const App = ()  => {
         day: 'Oct 21th at 6h30',
         reminder: true
     },
-]);
-   return (
-     <div className="container">
-      <Header title={appName} />
-      <Tasks tasks={tasks} />
-     </div>
-   );
+];
+const Tasks = () => {
 
+    const [task, setTasks] = useState()
+
+    return (
+       <>
+       { 
+        tasks.map((task) => ( <>  <h3>{ task.id.toString } {task.text} </h3> </> )) 
+       }
+       </>
+    );
 }
 
-export default App;
+export default Tasks 

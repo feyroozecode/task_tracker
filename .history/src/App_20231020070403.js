@@ -1,12 +1,11 @@
 import Header from './components/Header'
 import Tasks from './components/Tasks'
-import { useState } from 'react'
+
 /**
  * A App component entry of the React App
 */
 const App = ()  => {
    const appName = 'Task Tracker App'
-
    const [tasks, setTasks] = useState( [
     {
         id: 1,
@@ -30,7 +29,7 @@ const App = ()  => {
    return (
      <div className="container">
       <Header title={appName} />
-      <Tasks tasks={tasks} />
+      <Tasks />
      </div>
    );
 
