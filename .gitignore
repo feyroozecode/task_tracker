@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# unused folders
+.vscode 
+.history
+
 # testing
 /coverage
 
