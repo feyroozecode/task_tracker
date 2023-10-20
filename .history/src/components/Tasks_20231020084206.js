@@ -5,7 +5,7 @@ const Tasks = ({ tasks }) => {
     return (
        <>
        { 
-        tasks.map((task) => ( <> <TaskItem task={task}/> </> )) 
+        tasks.map((task) => ( <> <TaskI task={task}/> </> )) 
        }
        </>
     );
