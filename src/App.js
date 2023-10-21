@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
-import { useState } from 'react'
+import AddTask from './components/AddTask'
+
 /**
  * A App component entry of the React App
 */
 const App = ()  => {
    const appName = 'Task Tracker App'
 
+   // my default task list with init to use useState
    const [tasks, setTasks] = useState( [
     {
         id: 1,
@@ -28,20 +31,26 @@ const App = ()  => {
     },
 ]);
 
-// delete task
+// delete task based on its ID
 const deleteTask = (id) => {
+  // create a new array, updateTasks , by filtering out the task with the given ID
   const updatedTasks = tasks.filter((task) => task.id !== id )
+
+  // update the tasks state with newly filtred array 
   setTasks(updatedTasks)
 
   console.log('delete ', id);
 }
 
-// Toggle Reminder
+// Fun to Toggle Reminder status based in its ID
 const toggleReminder = (id) => {
+  // use setTasks function to update the state of the tasks
   setTasks(tasks.map((task) => 
+      // check if the task id matches the provided id 
       task.id === id ? 
+        // if id match, create a new task by spreading the existing tasks and toggle the reminder status to its opposite
         { ...task , reminder: !task.reminder}
-        : task
+        : task // else don't change a status 
     )
   )
   console.log(id);
@@ -50,13 +59,17 @@ const toggleReminder = (id) => {
    return (
      <div className="container">
       <Header title={appName} />
-      { tasks.length > 0 ? ( 
+      <AddTask />
+      { 
+      tasks.length > 0 ? (
         <Tasks 
           tasks={tasks} 
           onDelete={deleteTask} 
           onToggle={toggleReminder} /> 
         )
-        : ( <p><center> Not task to show</center> </p> )
+        : ( 
+          <p><center> Not task to show</center> </p> 
+        )
       }
      </div>
    );
