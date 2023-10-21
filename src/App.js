@@ -56,10 +56,15 @@ const toggleReminder = (id) => {
   console.log(id);
 }
 
+// Add task
+const addTask = (task) => {
+  console.table(task);
+}
+
    return (
      <div className="container">
       <Header title={appName} />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       { 
       tasks.length > 0 ? (
         <Tasks 
