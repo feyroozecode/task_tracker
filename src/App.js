@@ -9,6 +9,8 @@ import AddTask from './components/AddTask'
 const App = ()  => {
    const appName = 'Task Tracker App'
 
+  const [showAddTask, setShowAddTask] = useState(false)
+
    // my default task list with init to use useState
    const [tasks, setTasks] = useState( [
     {
@@ -56,11 +58,14 @@ const toggleReminder = (id) => {
   console.log(id);
 }
 
-// Add task with given task 
+// Add task with given task object
 const addTask = (task) => {
+  // Generate a unique ID of new task
   const id = Math.floor(Math.random() * 1000 ) + 1
 
+  // create a new task object by spreading he provided task properties and adding the generated ID
   const newTask = { id, ...task }
+  // Update the tasks state by adding a new task to the existing tasks
   setTasks([...tasks, newTask])
 
   //console.log(`new task addes successfully => ${newTask.title}`);
@@ -69,8 +74,14 @@ const addTask = (task) => {
 
    return (
      <div className="container">
-      <Header title={appName} />
-      <AddTask onAdd={addTask} />
+      <Header 
+        onAdd={ ()=> 
+            setShowAddTask(!showAddTask)
+        } 
+        showAdd={showAddTask}
+        title={appName} 
+      />
+      { showAddTask &&   <AddTask onAdd={addTask} />  }
       { 
       tasks.length > 0 ? (
         <Tasks 
