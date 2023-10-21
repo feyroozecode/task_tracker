@@ -49,16 +49,22 @@ const toggleReminder = (id) => {
       // check if the task id matches the provided id 
       task.id === id ? 
         // if id match, create a new task by spreading the existing tasks and toggle the reminder status to its opposite
-        { ...task , reminder: !task.reminder}
+        {  ...task , reminder: !task.reminder}
         : task // else don't change a status 
     )
   )
   console.log(id);
 }
 
-// Add task
+// Add task with given task 
 const addTask = (task) => {
-  console.table(task);
+  const id = Math.floor(Math.random() * 1000 ) + 1
+
+  const newTask = { id, ...task }
+  setTasks([...tasks, newTask])
+
+  //console.log(`new task addes successfully => ${newTask.title}`);
+
 }
 
    return (
