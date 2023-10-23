@@ -33,19 +33,49 @@ const App = ()  => {
        const data = await res.json()
    return data;
 }    
+
+ // fetch a single task 
+ const fetchTask = async (id) => {
+       const res = await fetch(`${TASK_BASE_URL}/${id}`)
+       const data = await res.json()
+
+   return data;
+}    
+
+
 // delete task based on its ID
-const deleteTask = (id) => {
-  // create a new array, updateTasks , by filtering out the task with the given ID
-  const updatedTasks = tasks.filter((task) => task.id !== id )
+const deleteTask = async  (id) => {
+
+  await fetch(`${TASK_BASE_URL}/${id}`, { 
+    method: 'DELETE' 
+  })
 
   // update the tasks state with newly filtred array 
-  setTasks(updatedTasks)
+  setTasks(tasks.filter((task) => task.id !== id ))
 
-  console.log('delete ', id);
+  console.log('delete product with id ', id);
 }
 
 // Fun to Toggle Reminder status based in its ID
-const toggleReminder = (id) => {
+const toggleReminder = async (id) => {
+
+  // get the id to update 
+  const taskToToggle = await fetchTask(id)
+
+  // update there value on locale 
+  const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
+
+  // update  to the server based on there id with PUT method
+  const res = await fetch(
+    `${TASK_BASE_URL}/${id}`, {
+     method: 'PUT' ,
+     headers: {
+      'Content-type': 'application/json'
+     },
+     body: JSON.stringify(updatedTask)
+    }
+  );
+
   // use setTasks function to update the state of the tasks
   setTasks(tasks.map((task) => 
       // check if the task id matches the provided id 
@@ -59,14 +89,20 @@ const toggleReminder = (id) => {
 }
 
 // Add task with given task object
-const addTask = (task) => {
-  // Generate a unique ID of new task
-  const id = Math.floor(Math.random() * 1000 ) + 1
+const addTask = async (task) => {
 
-  // create a new task object by spreading he provided task properties and adding the generated ID
-  const newTask = { id, ...task }
-  // Update the tasks state by adding a new task to the existing tasks
-  setTasks([...tasks, newTask])
+
+  const res = await fetch(`${TASK_BASE_URL}`, { 
+    method: 'POST' , 
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(task)
+    } )
+ 
+  const data = await  res.json()
+
+  setTasks([...tasks, data])
 
   //console.log(`new task addes successfully => ${newTask.title}`);
 
