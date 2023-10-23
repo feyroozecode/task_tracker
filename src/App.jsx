@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
+import {BrowserRouter as Router , Route , Switch} from 'react-router-dom'
+
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
+import Footer from './components/Footer'
+import About from './components/About'
+
 
 /**
  * A App component entry of the React App
@@ -109,7 +114,8 @@ const addTask = async (task) => {
 }
 
    return (
-     <div className="container">
+    <Router>
+        <div className="container">
       <Header 
         onAdd={ ()=> 
             setShowAddTask(!showAddTask)
@@ -131,8 +137,11 @@ const addTask = async (task) => {
             <p> Not task to show</p> 
           </center>
         )
+       
       }
+    
      </div>
+    </Router>
    );
 
 }
