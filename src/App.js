@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
@@ -7,32 +7,32 @@ import AddTask from './components/AddTask'
  * A App component entry of the React App
 */
 const App = ()  => {
+
+   const TASK_BASE_URL = 'http://127.0.0.1:5000/tasks';
    const appName = 'Task Tracker App'
 
   const [showAddTask, setShowAddTask] = useState(false)
 
    // my default task list with init to use useState
-   const [tasks, setTasks] = useState( [
-    {
-        id: 1,
-        text: 'Read Quraan',
-        day: 'Oct 20th at 6h00',
-        reminder: true
-    },
-    {
-        id: 2,
-        text: 'Code a React Project ',
-        day: 'Oct 20th at 6h30',
-        reminder: false
-    },
-    {
-        id: 3,
-        text: 'Learn Project Management',
-        day: 'Oct 21th at 6h30',
-        reminder: true
-    },
-]);
+  const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    const getTasks = async () => {
+       const tasksFromServer = await fetchTasks()
+       setTasks(tasksFromServer)
+    }    
+  
+  getTasks();
+
+  console.log(tasks)
+
+  }, [] )
+
+ const fetchTasks = async () => {
+       const res = await fetch(TASK_BASE_URL)
+       const data = await res.json()
+   return data;
+}    
 // delete task based on its ID
 const deleteTask = (id) => {
   // create a new array, updateTasks , by filtering out the task with the given ID
@@ -87,10 +87,13 @@ const addTask = (task) => {
         <Tasks 
           tasks={tasks} 
           onDelete={deleteTask} 
-          onToggle={toggleReminder} /> 
+          onToggle={toggleReminder} 
+        /> 
         )
         : ( 
-          <p><center> Not task to show</center> </p> 
+          <center>
+            <p> Not task to show</p> 
+          </center>
         )
       }
      </div>
