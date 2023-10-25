@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
-import {BrowserRouter as Router , Route , Switch} from 'react-router-dom'
+import {BrowserRouter as Router , Routes, Route , Switch} from 'react-router-dom'
 
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import Footer from './components/Footer'
 import About from './components/About'
+import TaskDetails from './components/TaskDetails'
 
 
 /**
@@ -13,7 +14,7 @@ import About from './components/About'
 */
 const App = ()  => {
 
-   const TASK_BASE_URL = 'http://127.0.0.1:5000/tasks';
+   const TASK_BASE_URL = 'http://localhost:5000/tasks';
    const appName = 'Task Tracker App'
 
   const [showAddTask, setShowAddTask] = useState(false)
@@ -114,8 +115,8 @@ const addTask = async (task) => {
 }
 
    return (
-    <Router>
-        <div className="container">
+      <Router>
+         <div className="container">
       <Header 
         onAdd={ ()=> 
             setShowAddTask(!showAddTask)
@@ -123,25 +124,42 @@ const addTask = async (task) => {
         showAdd={showAddTask}
         title={appName} 
       />
-      { showAddTask &&   <AddTask onAdd={addTask} />  }
-      { 
-      tasks.length > 0 ? (
-        <Tasks 
-          tasks={tasks} 
-          onDelete={deleteTask} 
-          onToggle={toggleReminder} 
-        /> 
-        )
-        : ( 
-          <center>
-            <p> Not task to show</p> 
-          </center>
-        )
-       
-      }
     
+      <Routes>
+          <Route
+            path='/'
+            element={
+                <>
+                { showAddTask &&   <AddTask onAdd={addTask} />  }
+                { 
+                tasks.length > 0 ? (
+                  <Tasks  
+                    tasks={tasks} 
+                    onDelete={deleteTask} 
+                    onToggle={toggleReminder} 
+                  /> 
+                  )
+                  : ( 
+                    <center>
+                      <p> Not task to show</p> 
+                    </center>
+                  )
+                
+                }   
+              </>
+            }
+            
+          />
+
+           
+      <Route element={ <About /> }  path='/about'/>
+      <Route element={<TaskDetails />}  path='/task/:id' />
+     </Routes>
+    <Footer />
      </div>
-    </Router>
+  </Router>
+     
+ 
    );
 
 }

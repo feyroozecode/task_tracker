@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import AddButton from './AddButton'
+import AddButton from './Button'
 
 /*
  * Header compnent show title and use a AddButton component for add new task 

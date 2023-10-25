@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
         <footer>
             <p> &copy; Alfajer Apps, 2023  </p>
-            <a href=""> About us </a>
+            
+            <Link to="/about"> About </Link>
         </footer>
     )
 }

@@ -1,4 +1,6 @@
 import { FaTimes }  from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
 /**
  * A TaskItem compnent to show a simple Item of Task
  */
@@ -13,6 +15,8 @@ const TaskItem = ({ task , onDelete , onToggle }) => {
                 /> 
             </h3>
             <p> { task.day } </p>
+            
+            <p> <Link to={`/task/${task.id}`} > Views Details </Link> </p>
 
         </div>
     )

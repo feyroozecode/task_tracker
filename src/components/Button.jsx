@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
  * @param text => a text to show on button
  * @param onClick => onClick function to call when btn is clicked 
 */
-const AddButton = ({color, text, onClick}) => {
+const MButton = ({color, text, onClick}) => {
 
     return (
      <button
@@ -17,15 +17,15 @@ const AddButton = ({color, text, onClick}) => {
     )
 }
 
-AddButton.defaultProps = {
+MButton.defaultProps = {
     color: 'steetblue' // default color of button 
 }
 
 // define a different props types to prevent error and for type checking 
-AddButton.propTypes = {
+MButton.propTypes = {
     text: PropTypes.string, 
     color: PropTypes.string,
     onClick: PropTypes.func.isRequired
 }
 
-export default AddButton
+export default MButton
