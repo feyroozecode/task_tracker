@@ -41,7 +41,7 @@ const TaskDetails = () => {
             <div>Loading </div>
           ) : (
             <div>
-                <p> Path :  {pathname} </p> <br />
+                <p> Path :  {pathname} </p>
                 <h3> { task.text } </h3>
                 <p> {task.day} </p>
                 <Button  onClick={() => {
